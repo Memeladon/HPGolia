@@ -27,8 +27,6 @@ def create_player(username: str, age: int, biography: str, db: Session):
     return new_player
 
 
-# TODO: ИСПРАВИТЬ ОШИБКУ
-# AttributeError: 'Depends' object has no attribute 'add_all'
 def create_players(players_data: list, db: Session):
     players = [Player(**data) for data in players_data]
     db.add_all(players)
