@@ -1,13 +1,10 @@
-FROM node:lts-alpine
+FROM node:22-alpine
 
 WORKDIR /app
 
-ENV PATH /app/node_modules/.bin:$PATH
+COPY . /app
 
-RUN npm install @vue/cli@5.0.8 -g
+RUN npm i
 
-COPY package.json .
-COPY package-lock.json .
-RUN npm install
-
-CMD ["npm", "run", "serve"]
+# пока без билда
+CMD [ "npm", "run", "dev" ]
