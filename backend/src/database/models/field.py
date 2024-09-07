@@ -1,10 +1,10 @@
 from .base import db_connect
 from sqlalchemy import Column, Integer, String, Enum, JSON
 from sqlalchemy.orm import relationship
-from enum import Enum as PyEnum
+from enum import StrEnum
 
 
-class FieldType(PyEnum):
+class FieldType(StrEnum):
     START = 'Старт'
     AUCTION = 'Аукционная'
     LOTTERY = 'Лотерея'
@@ -27,16 +27,3 @@ class Field(db_connect.Base):
     def __repr__(self):
         return f"Field(id={self.id}, name='{self.name}', type='{self.type}')"
 
-    '''
-        Пример использования
-    # Пока у пользователя нет "players"
-     fieldname = Field(name='Kalowar', Type=FieldType.GAME, rules=json.dump('...'))
-     fieldname.players  # Пустой список
-     
-     # Добавим адресов ему
-     fieldname.players = [
-                 Player(name='...'),
-                 Player(name='...'),
-                 Player(name='...')
-            ]
-    '''
