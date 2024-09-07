@@ -7,4 +7,4 @@
   - NGINX
 
 ### frontend
-  - SPA (Vue)
+  - SPA (React)
