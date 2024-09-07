@@ -1,13 +1,12 @@
 FROM python:3.12
 
-RUN mkdir app
-WORKDIR /app
+COPY src/ .
+COPY Pipfile .
+
+RUN pip install pipenv
+RUN PIPENV_VENV_IN_PROJECT=1 pipenv install --deploy
 
 ENV PATH="${PATH}:/root/.local/bin"
 ENV PYTHONPATH=.
 
-COPY requirements.txt .
-RUN pip install --upgrade pip
-RUN pip install -r requirements.txt
-
-COPY src/ .
+CMD ["pipenv", "run", "uvicorn", "start:app", "--port", "5000"]
