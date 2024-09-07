@@ -3,9 +3,9 @@ import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from .config import PROJECT_VERSION, PROJECT_NAME
-from .database.register import init_db
-from .routers import hpg_map, hpg_players, hpg_description
+from config import PROJECT_VERSION, PROJECT_NAME
+from database.register import init_db
+from routers import hpg_map, hpg_players, hpg_description
 
 DATABASE_URL = os.getenv('DATABASE_URL')
 if not DATABASE_URL:
