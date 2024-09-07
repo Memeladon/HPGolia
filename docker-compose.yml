@@ -18,6 +18,7 @@ services:
     #   - "5080:3000"
     volumes:
       - '/app/node_modules'
+      - './frontend:/app'
     depends_on:
       db:
         condition: service_healthy
