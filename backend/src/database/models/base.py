@@ -6,7 +6,6 @@ DATABASE_URL = os.getenv('DATABASE_URL')
 if not DATABASE_URL:
     raise ValueError("DATABASE_URL is not defined!")
 
-print(DATABASE_URL)
 engine = create_engine(
     url=DATABASE_URL
 )
