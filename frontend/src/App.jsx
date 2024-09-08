@@ -5,6 +5,7 @@ import { Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
 import React from 'react';
+import Login from './pages/Login';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route element={<Navbar />}>
           <Route index element={<Home />} />
+          <Route path='/login' element={<Login />} />
           <Route path='*' element={<NotFound />} />
         </Route>
       </Routes>
