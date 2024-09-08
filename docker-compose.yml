@@ -1,11 +1,11 @@
-version: '3.10'
+version: '3.11'
 
 services:
 
   backend:
     build: ./backend
-    # ports:
-    #   - "5000:5000"
+    ports:
+      - "5000:5000"
     depends_on:
       db:
         condition: service_healthy
@@ -27,8 +27,6 @@ services:
     restart: always
     ports:
       - "5432:5432"
-    env_file:
-      - ./.env
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     healthcheck:

@@ -3,7 +3,7 @@
 # ============================================================================================================ #
 from sqlalchemy.orm import Session
 
-from backend.src.database.models import Field
+from src.database.models import Field
 
 
 def create_fields(fields_data: list, db: Session):

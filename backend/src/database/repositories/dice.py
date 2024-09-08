@@ -6,7 +6,7 @@ import random
 from sqlalchemy import func
 from sqlalchemy.orm import Session
 
-from backend.src.database.models import Player, DiceRoll
+from src.database.models import Player, DiceRoll
 
 
 def roll_dice(player_id: int, db: Session):
