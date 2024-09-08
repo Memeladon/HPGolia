@@ -10,11 +10,12 @@ engine = create_engine(
     url=DATABASE_URL
 )
 
+
 session = sessionmaker(engine, expire_on_commit=False)
 
 
-def get_db(self) -> Session:
-    db = self.SessionLocal()
+def get_db() -> Session:
+    db = session()
     try:
         yield db
     finally:

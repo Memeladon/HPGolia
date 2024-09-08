@@ -3,7 +3,7 @@
 # ============================================================================================================ #
 from sqlalchemy.orm import Session
 
-from backend.src.database.models import Player, DiceRoll, PlayerFieldPosition
+from src.database.models import Player, DiceRoll, PlayerFieldPosition
 
 
 def create_player(username: str, age: int, biography: str, db: Session):

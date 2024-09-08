@@ -1,11 +1,13 @@
 import os
 
+import psycopg2
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from config import PROJECT_VERSION, PROJECT_NAME
-from database.register import init_db
-from routers import hpg_map, hpg_players, hpg_description
+from src.config import PROJECT_VERSION, PROJECT_NAME
+from src.database.register import init_db
+from src.routers import users, games
+
 
 DATABASE_URL = os.getenv('DATABASE_URL')
 if not DATABASE_URL:
@@ -23,9 +25,8 @@ app.add_middleware(
 )
 
 # ------------ Routing ------------ #
-app.include_router(hpg_map.router)
-app.include_router(hpg_players.router)
-app.include_router(hpg_description.router)
+app.include_router(users.router)
+app.include_router(games.router)
 
 
 @app.get("/")
