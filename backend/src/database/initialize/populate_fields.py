@@ -1,6 +1,22 @@
-from ..crud import create_fields
-from ..models import FieldType
-import json
+from src.database.repositories.cell import create_cells
+from src.database.models import get_db
+
+# ПЕРЕНЕСТИ ЭТО В JSON ВИДА:
+#     {
+#         'position': 1,
+#         'title': 'Start',
+#         'type': 'start',
+#         'main_conditions': '{"condition1": true, "condition2": false}',
+#         'genre_conditions': '{"genre1": ["value1", "value2"], "genre2": []}'
+#     },
+#     {
+#         'position': 2,
+#         'title': 'Normal',
+#         'type': 'normal',
+#         'main_conditions': '{"condition1": false, "condition2": true}',
+#         'genre_conditions': '{"genre1": [], "genre2": ["value1"]}'
+#     }
+
 
 
 def init_fields(db):
