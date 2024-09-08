@@ -11,6 +11,8 @@ pydantic = "*"
 sqlalchemy = "*"
 psycopg = "*"
 psycopg-binary = "*"
+alembic = "*"
+python-dotenv = "*"
 
 [dev-packages]
 
