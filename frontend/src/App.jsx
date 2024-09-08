@@ -1,19 +1,19 @@
-import { useState } from 'react';
+import Home from './pages/Home';
+import Navbar from './components/common/Navbar';
 import './App.css';
 
-function App() {
-  const [count, setCount] = useState(0);
+import React from 'react';
 
+import { Router, Route, Routes } from 'react-router-dom';
+
+function App() {
   return (
     <>
-      <h1>Welcome to HPGolia!</h1>
-      <button
-        onClick={() => {
-          setCount(Math.random() * 1000 + 2);
-        }}
-      >
-        Ok {count}
-      </button>
+      <Routes>
+        <Route element={<Navbar />}>
+          <Route path='/' element={<Home />}></Route>
+        </Route>
+      </Routes>
     </>
   );
 }
