@@ -15,7 +15,7 @@ app = FastAPI(title=PROJECT_NAME, version=PROJECT_VERSION, root_path="/api")
 # ---------- Middleware ---------- #
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:8080"],
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

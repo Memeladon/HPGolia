@@ -8,12 +8,13 @@ export default function Home() {
   return (
     <VStack>
       <Heading
+        p={5}
         as='h1'
         size='4xl'
         bgGradient='linear(to-l, #7928CA, #FF0080)'
         bgClip='text'
       >
-        Welcome to HPGolia!
+        Welcome to PPlay!
       </Heading>
 
       <ButtonGroup>

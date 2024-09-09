@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import NotFound from './pages/NotFound';
 import React from 'react';
 import Login from './pages/Login';
+import User from './pages/User';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route element={<Navbar />}>
           <Route index element={<Home />} />
           <Route path='/login' element={<Login />} />
+          <Route path='/user' element={<User />} />
           <Route path='*' element={<NotFound />} />
         </Route>
       </Routes>
