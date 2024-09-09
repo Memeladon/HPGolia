@@ -12,6 +12,6 @@ class PlayerItem(Base):
     item: Mapped[int] = mapped_column(ForeignKey("item.id"),
                                       nullable=False,
                                       index=True)
-    user: Mapped[UUID] = mapped_column(ForeignKey("user.id"),
+    user: Mapped[UUID] = mapped_column(ForeignKey("users.id"),
                                        nullable=False,
                                        index=True)

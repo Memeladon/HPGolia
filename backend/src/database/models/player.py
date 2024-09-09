@@ -8,8 +8,8 @@ from src.database.models import Base
 class Player(Base):
     __tablename__ = "player"
 
-    id: Mapped[UUID] = mapped_column(primary_key=True, autoincrement=True)
-    user: Mapped[UUID] = mapped_column(ForeignKey("user.id"),
+    id: Mapped[UUID] = mapped_column(primary_key=True)
+    user: Mapped[UUID] = mapped_column(ForeignKey("users.id"),
                                        nullable=False,
                                        index=True)
     cell: Mapped[UUID] = mapped_column(ForeignKey("cell.id"),
