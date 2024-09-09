@@ -38,6 +38,11 @@ def read_game(db: Session, game_id: int) -> Union[Game, None]:
         db.close()
 
 
+def read_games(db: Session):
+    users = db.query(Game).all()
+    return users
+
+
 def update_game(db: Session, game_id: int, game_data: Dict[str, Any]) -> bool:
     try:
         game = db.query(Game).filter(Game.id == game_id).first()
@@ -102,6 +107,11 @@ def read_game_player(db: Session, game_player_id: int) -> Union[GamePlayer, None
         raise f"Error READ game_player: {str(e)}"
     finally:
         db.close()
+
+
+def read_game_players(db: Session):
+    users = db.query(GamePlayer).all()
+    return users
 
 
 def update_game_player(db: Session, game_player_id: int, game_player_data: Dict[str, Any]) -> bool:
