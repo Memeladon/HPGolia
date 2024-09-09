@@ -1,4 +1,4 @@
-# HPGolia
+# PPlay
 клон хпголии
 
 ### backend
