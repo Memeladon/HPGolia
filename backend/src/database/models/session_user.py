@@ -12,7 +12,7 @@ class SessionUser(Base):
     session: Mapped[UUID] = mapped_column(ForeignKey("session.id"),
                                           nullable=False,
                                           index=True)
-    user: Mapped[UUID] = mapped_column(ForeignKey("user.id"),
+    user: Mapped[UUID] = mapped_column(ForeignKey("users.id"),
                                        nullable=False,
                                        index=True)
     permission: Mapped[str] = mapped_column(nullable=False)

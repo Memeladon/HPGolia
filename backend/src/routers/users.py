@@ -1,29 +1,38 @@
-from fastapi import APIRouter
+from typing import Any, Dict
+from uuid import UUID
+
+from fastapi import APIRouter, Depends, Body
+from pydantic import BaseModel
+from sqlalchemy.orm import Session
 
 from src.database.models import get_db
-from src.database.repositories.player import create_player, update_player
 
-router = APIRouter(prefix="/players", tags=["players"])
+from src.database.repositories.user import read_users, read_user, update_user, delete_user, create_user
+from src.entities.user import UserCreate, User, UserUpdate
 
-
-@router.post("/create_new_one")
-def create_new_player(username: str, age: int, biography: str):
-    db = get_db()
-    player = create_player(username, age, biography, db)
-    return player
+router = APIRouter(tags=['users'], prefix='/users')
 
 
-# @router.post("/initialize")
-# def initialize_players():
-#     db = next(db_connect.get_db())
-#     init_players(db)
-#     return {"message": "Players initialized successfully"}
+@router.get('/')
+def get_all_users(db: Session = Depends(get_db)):
+    return read_users(db)
 
 
-@router.put("/{player_id}")
-def update_player_info(player_id: int, **kwargs):
-    db = get_db()
-    updated_player = update_player(player_id, db, **kwargs)
-    if updated_player:
-        return {"status": "success", "player": updated_player}
-    return {"status": "error", "message": "Player not found"}
+@router.get('/{id}')
+def get_one_user(id, db: Session = Depends(get_db)):
+    return read_user(db, id)
+
+
+@router.post('/')
+def create_one_user(data: UserCreate, db: Session = Depends(get_db)):
+    return create_user(db, data.dict())
+
+
+@router.put('/{id}')
+def update_one_user(id, data: UserUpdate, db: Session = Depends(get_db)):
+    return update_user(db, id, data.dict())
+
+
+@router.delete('/{id}')
+def delete_one_user(id, db: Session = Depends(get_db)):
+    return delete_user(db, id)
