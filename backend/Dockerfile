@@ -10,4 +10,4 @@ COPY alembic.ini .
 RUN pip install pipenv
 RUN PIPENV_VENV_IN_PROJECT=1 pipenv install --deploy
 
-CMD ["sh", "-c", "pipenv run alembic upgrade head && pipenv run uvicorn src.start:app --host 0.0.0.0 --port 5000 --proxy-headers"]
+CMD ["sh", "-c", "pipenv run alembic upgrade head && pipenv run uvicorn src.start:app --host 0.0.0.0 --port 5000 --proxy-headers --forwarded-allow-ips=*"]

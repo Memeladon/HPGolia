@@ -1,14 +1,9 @@
-from typing import Any, Dict
-from uuid import UUID
-
-from fastapi import APIRouter, Depends, Body
-from pydantic import BaseModel
+from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
 from src.database.models import get_db
-
 from src.database.repositories.user import read_users, read_user, update_user, delete_user, create_user
-from src.entities.user import UserCreate, User, UserUpdate
+from src.entities.user import UserCreate, UserUpdate
 
 router = APIRouter(tags=['users'], prefix='/users')
 

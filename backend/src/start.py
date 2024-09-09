@@ -10,7 +10,7 @@ DATABASE_URL = os.getenv('DATABASE_URL')
 if not DATABASE_URL:
     raise ValueError("DATABASE_URL is not defined!")
 
-app = FastAPI(title=PROJECT_NAME, version=PROJECT_VERSION)
+app = FastAPI(title=PROJECT_NAME, version=PROJECT_VERSION, root_path="/api")
 
 # ---------- Middleware ---------- #
 app.add_middleware(
