@@ -1,3 +1,5 @@
+from uuid import UUID
+
 from sqlalchemy.orm import Session
 from sqlalchemy.exc import SQLAlchemyError
 from typing import Union, Dict, Any
@@ -36,6 +38,11 @@ def read_item(db: Session, item_id: int) -> Union[Item, None]:
         raise f"Error READ item: {str(e)}"
     finally:
         db.close()
+
+
+def read_items(db: Session):
+    items = db.query(Item).all()
+    return items
 
 
 def update_item(db: Session, item_id: int, item_data: Dict[str, Any]) -> bool:
@@ -77,7 +84,7 @@ def delete_item(db: Session, item_id: int) -> bool:
 # =================================================================================================================== #
 
 
-def create_player_item(db: Session, player_item_data: Dict[str, Any]) -> Union[PlayerItem, None]:
+def create_player_item(db: Session, player_item_data: Dict[str, int | UUID]) -> Union[PlayerItem, None]:
     try:
         required_fields = ['item', 'user']
         if not all(field in player_item_data for field in required_fields):
@@ -103,6 +110,11 @@ def read_player_item(db: Session, player_item_id: int) -> Union[PlayerItem, None
         raise f"Error READ player_item: {str(e)}"
     finally:
         db.close()
+
+
+def read_player_items(db: Session):
+    player_items = db.query(PlayerItem).all()
+    return player_items
 
 
 def update_player_item(db: Session, player_item_id: int, player_item_data: Dict[str, Any]) -> bool:

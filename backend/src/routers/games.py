@@ -14,7 +14,7 @@ def get_all_games(db: Session = Depends(get_db)):
 
 
 @router.get('/{id}')
-def get_one_user(id: int, db: Session = Depends(get_db)):
+def get_one_game(id: int, db: Session = Depends(get_db)):
     return read_game(db, id)
 
 
@@ -24,10 +24,10 @@ def create_one_game(data: GameCreate, db: Session = Depends(get_db)):
 
 
 @router.put('/{id}')
-def update_one_user(id, data: GameUpdate, db: Session = Depends(get_db)):
+def update_one_game(id, data: GameUpdate, db: Session = Depends(get_db)):
     return update_game(db, id, data.dict())
 
 
 @router.delete('/{id}')
-def delete_one_user(id, db: Session = Depends(get_db)):
+def delete_one_game(id, db: Session = Depends(get_db)):
     return delete_game(db, id)
