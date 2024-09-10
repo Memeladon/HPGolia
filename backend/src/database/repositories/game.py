@@ -39,8 +39,8 @@ def read_game(db: Session, game_id: int) -> Union[Game, None]:
 
 
 def read_games(db: Session):
-    users = db.query(Game).all()
-    return users
+    games = db.query(Game).all()
+    return games
 
 
 def update_game(db: Session, game_id: int, game_data: Dict[str, Any]) -> bool:

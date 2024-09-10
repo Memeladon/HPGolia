@@ -13,9 +13,9 @@ from src.database.models import Player
 
 def create_player(db: Session, player_data: Dict[str, Any]) -> Union[Player, None]:
     try:
-        required_fields = ['user', 'cell', 'nickname', 'profile_image', 'points', 'round']
+        required_fields = ['user', 'cell', 'nickname', 'profile_image']
         if not all(field in player_data for field in required_fields):
-            raise ValueError("Missing required fields: user, cell, nickname, profile_image, points, round")
+            raise ValueError("Missing required fields: user, cell, nickname, profile_image")
 
         new_player = Player(**player_data)
         db.add(new_player)
@@ -37,6 +37,11 @@ def read_player(db: Session, player_id: UUID) -> Union[Player, None]:
         raise f"Error READ player: {str(e)}"
     finally:
         db.close()
+
+
+def read_players(db: Session):
+    players = db.query(Player).all()
+    return players
 
 
 def update_player(db: Session, player_id: UUID, player_data: Dict[str, Any]) -> bool:
