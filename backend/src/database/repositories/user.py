@@ -15,7 +15,8 @@ from src.database.models import User
 
 def create_user(db: Session, data: Dict[str, Any]) -> Union[User, None]:
     try:
-        new_one = User(**data, id=uuid.uuid4(), password=get_password_hash(data['password']))
+        new_one = User(**data, id=uuid.uuid4())
+        new_one.password = get_password_hash(data['password'])
         db.add(new_one)
         db.commit()
         db.refresh(new_one)
