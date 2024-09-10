@@ -4,8 +4,10 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from src.config import PROJECT_VERSION, PROJECT_NAME
-from src.routers import storage
-from src.routers import users, auth, items, players, games
+
+from src.routers import storage, session_map
+from src.routers import users, auth
+from src.routers import items, players, games
 
 DATABASE_URL = os.getenv('DATABASE_URL')
 if not DATABASE_URL:
@@ -26,6 +28,8 @@ app.add_middleware(
 app.include_router(users.router)
 app.include_router(storage.router)
 app.include_router(auth.router)
+app.include_router(session_map.router)
+
 # app.include_router(items.router)
 # app.include_router(players.router)
 # app.include_router(games.router)
