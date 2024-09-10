@@ -48,7 +48,7 @@ export default function Navbar() {
               <NavItem to='/'>
                 <Image src={logo} alt='logo' boxSize='40px'></Image>
               </NavItem>
-              <NavItem to='/game'>Game</NavItem>
+              <NavItem to='/session'>Session</NavItem>
             </HStack>
           </HStack>
           <Box marginLeft={'auto'}>
