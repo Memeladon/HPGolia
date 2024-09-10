@@ -51,7 +51,6 @@ def create_cells(db: Session, cells_data: List[Dict[str, Any]]) -> Union[List[Ce
 
         return None
     except SQLAlchemyError as e:
-        print(f"Error MANY CREATE cells: {str(e)}")
         db.rollback()
         return None
     finally:

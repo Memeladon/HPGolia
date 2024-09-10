@@ -4,7 +4,8 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from src.config import PROJECT_VERSION, PROJECT_NAME
-from src.routers import users, storage
+from src.routers import storage
+from src.routers import users, auth
 
 DATABASE_URL = os.getenv('DATABASE_URL')
 if not DATABASE_URL:
@@ -24,6 +25,7 @@ app.add_middleware(
 # ------------ Routing ------------ #
 app.include_router(users.router)
 app.include_router(storage.router)
+app.include_router(auth.router)
 
 
 @app.get("/")

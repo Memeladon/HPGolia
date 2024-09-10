@@ -31,7 +31,7 @@ def upgrade() -> None:
         {
             "id": USER_ID,
             "username": "admin",
-            "password": "admin",
+            "password": "$scrypt$ln=16,r=8,p=1$wXjP+X8v5Tzn3BsjRGhNiQ$OMVKqmnCnrR324quXK8U4L0FIUQBjhT5pv+6Ox9Jl1M",
             "role": "ADMIN",
             "is_active": "true"
         }

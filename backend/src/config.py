@@ -1,5 +1,6 @@
-from dotenv import load_dotenv
 import os
+
+from dotenv import load_dotenv
 
 load_dotenv(".env")
 
@@ -10,5 +11,7 @@ DATABASE_URL = os.getenv("DATABASE_URL")
 POSTGRES_PORT = os.getenv("POSTGRES_PORT")
 POSTGRES_HOST = os.getenv("POSTGRES_HOST")
 
+SECRET = os.getenv("SECRET")
+
 PROJECT_NAME = 'PPlay'
-PROJECT_VERSION = '0.0.0'
+PROJECT_VERSION = '0.1.0'
