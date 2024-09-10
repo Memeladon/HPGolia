@@ -5,6 +5,7 @@ from uuid import UUID
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import Session
 
+from src.crypto.crypto import get_password_hash
 from src.database.models import User
 
 
@@ -14,7 +15,7 @@ from src.database.models import User
 
 def create_user(db: Session, data: Dict[str, Any]) -> Union[User, None]:
     try:
-        new_one = User(**data, id=uuid.uuid4())
+        new_one = User(**data, id=uuid.uuid4(), password=get_password_hash(data['password']))
         db.add(new_one)
         db.commit()
         db.refresh(new_one)
@@ -30,6 +31,15 @@ def read_user(db: Session, user_id: UUID) -> Union[User, None]:
     try:
         user = db.query(User).filter(User.id == user_id).first()
         return user
+    except SQLAlchemyError as e:
+        raise f"Error READ user: {str(e)}"
+    finally:
+        db.close()
+
+
+def read_user_by_username(db: Session, username: str) -> Union[User, None]:
+    try:
+        return db.query(User).filter(User.username == username).first()
     except SQLAlchemyError as e:
         raise f"Error READ user: {str(e)}"
     finally:
