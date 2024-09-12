@@ -1,12 +1,14 @@
-import { Box, Heading } from '@chakra-ui/react';
+import { Box, Center, Heading } from '@chakra-ui/react';
 import React from 'react';
 
 import Map from '../components/Map';
 
 export default function Session() {
   return (
-    <Box className='session-container'>
-      <Map></Map>
-    </Box>
+    <Center className='session-container'>
+      <Box maxWidth={'70%'} className='session'>
+        <Map></Map>
+      </Box>
+    </Center>
   );
 }

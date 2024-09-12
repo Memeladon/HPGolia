@@ -1,14 +1,14 @@
-import { Box, Center, Heading, HStack, Image, VStack } from '@chakra-ui/react';
-import React from 'react';
+import { Center, Image } from '@chakra-ui/react';
+import { constants } from '../debug';
 
-export default function Cell({ cellData }) {
+export default function Cell({ cellData, imgSrc }) {
   return (
     <Center bgColor={'teal'} className='cell-container'>
-        <Image
-          maxWidth={'60%'}
-          src='https://www.w3schools.com/css/img_forest.jpg'
-          alt='Dan Abramov'
-        />
+      <Image
+        maxWidth={'60%'}
+        src={imgSrc || constants.map.defaultImgSrc}
+        alt='Dan Abramov'
+      />
     </Center>
   );
 }

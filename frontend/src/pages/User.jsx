@@ -37,8 +37,6 @@ export default function User() {
     })();
   }, []);
 
-  console.log(user);
-
   return (
     <Center>
       <Stack
@@ -82,7 +80,6 @@ export default function User() {
           {
             // @ts-ignore
             Object.entries(user).map(([key, value]) => {
-              console.log(key, value, 'cock');
               return (
                 <Text key={key}>
                   {key} - {value}
