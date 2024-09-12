@@ -6,6 +6,7 @@ export const constants = {
     logo: 'https://media.tenor.com/MGyRddHl280AAAAM/funnydogs-cute.gif',
   },
   map: {
+    defaultImgSrc: 'https://www.w3schools.com/css/img_forest.jpg',
     cells: [
       { id: 0, title: 'test cell ()' },
       { id: 1, title: 'test cell ()' },
@@ -48,5 +49,17 @@ export const constants = {
       { id: 38, title: 'test cell ()' },
       { id: 39, title: 'test cell ()' },
     ],
+  },
+  http: {
+    ok: 200,
+    unauthorized: 401,
+    forbidden: 403,
+    notFound: 404,
+
+    isInfo: (status) => status > 99 && status < 200,
+    isOk: (status) => status > 199 && status < 300,
+    isRedirect: (status) => status > 299 && status < 400,
+    isBad: (status) => status > 399 && status < 500,
+    isSystemBad: (status) => status > 499 && status < 600,
   },
 };
