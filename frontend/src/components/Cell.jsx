@@ -1,14 +1,23 @@
-import { Center, Image } from '@chakra-ui/react';
+import { Center, HStack, Image, VStack } from '@chakra-ui/react';
 import { constants } from '../debug';
 
-export default function Cell({ cellData, imgSrc }) {
+export default function Cell({ cellData }) {
   return (
-    <Center bgColor={'teal'} className='cell-container'>
+    <VStack
+      backgroundColor={'gray.500'}
+      className='cell-container'
+      width={'7vw'}
+      height={'7vh'}
+    >
       <Image
-        maxWidth={'60%'}
-        src={imgSrc || constants.map.defaultImgSrc}
-        alt='Dan Abramov'
+        className='cell-img select-disable'
+        draggable='false'
+        display={'block'}
+        width={'auto'}
+        height={'100%'}
+        src={cellData.background_img}
+        alt={`${cellData.title}`}
       />
-    </Center>
+    </VStack>
   );
 }

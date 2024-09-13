@@ -69,7 +69,10 @@ export default function Navbar() {
                 <NavItem to='/user'>
                   <Wrap>
                     <WrapItem>
-                      <Avatar src={constants.user.logo}></Avatar>
+                      <Avatar
+                        draggable='false'
+                        src={constants.user.logo}
+                      ></Avatar>
                     </WrapItem>
                   </Wrap>
                 </NavItem>
