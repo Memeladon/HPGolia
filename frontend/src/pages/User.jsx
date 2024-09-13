@@ -42,7 +42,7 @@ export default function User() {
       <Stack
         borderWidth='1px'
         borderRadius='md'
-        w={{ sm: '100%', md: '700px' }}
+        w={{ sm: '100%', md: '41%' }}
         height={{ sm: '476px', md: '20rem' }}
         direction={{ base: 'column', md: 'row' }}
         bg={useColorModeValue('white', 'gray.900')}

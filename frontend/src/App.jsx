@@ -31,17 +31,35 @@ function App() {
 
   useEffect(() => {
     (async () => {
+      if (!accessToken) return;
+
       try {
         const response = await axios.get(
           `${constants.baseUrl}/session-map/cells`
         );
 
-        setCells(response.data);
+        setCells(
+          response.data.map((cell) => {
+            let backgroundImg = cell.background_img;
+
+            if (backgroundImg && backgroundImg.includes('/')) {
+              const imgTitle = backgroundImg.split('/').pop();
+
+              // добавил это т.к. может приходить "cells/.png"
+              backgroundImg = imgTitle.startsWith('.')
+                ? null
+                : `${constants.baseUrl}/storage/cells/${imgTitle}`;
+            }
+
+            cell.background_img = backgroundImg;
+            return cell;
+          })
+        );
       } catch (e) {
         console.error('error fetch cells', e);
       }
     })();
-  }, []);
+  }, [accessToken]);
 
   return (
     <>
