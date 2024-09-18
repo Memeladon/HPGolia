@@ -38,6 +38,16 @@ def read_session(db: Session, session_id: UUID) -> Union[DBSession, None]:
         db.close()
 
 
+def read_sessions(db: Session):
+    try:
+        sessions = db.query(SessionUser).all()
+        return sessions
+    except SQLAlchemyError as e:
+        raise f"Error READ sessions: {str(e)}"
+    finally:
+        db.close()
+
+
 def update_session(db: Session, session_id: UUID, session_data: Dict[str, Any]) -> bool:
     try:
         session = db.query(DBSession).filter(DBSession.id == session_id).first()
@@ -100,6 +110,16 @@ def read_session_user(db: Session, session_user_id: int) -> Union[SessionUser, N
         return session_user
     except SQLAlchemyError as e:
         raise f"Error READ session_user: {str(e)}"
+    finally:
+        db.close()
+
+
+def read_session_users(db: Session):
+    try:
+        session_users = db.query(SessionUser).all()
+        return session_users
+    except SQLAlchemyError as e:
+        raise f"Error READ session_users: {str(e)}"
     finally:
         db.close()
 
